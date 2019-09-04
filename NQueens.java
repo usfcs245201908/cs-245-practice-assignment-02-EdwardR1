@@ -16,17 +16,17 @@ public class NQueens {
 		if (n <= 0) {
 			throw new Exception("n is less than 0!");
 		}
-		return placeQueen(0);
+		return placeNQueens(0);
 	}
 
-	private boolean placeQueen(int row) {
+	private boolean placeNQueens(int row) {
 		if (row == n) {
 			return true;
 		}
 		for (int col = 0; col < n; col++) {
 			if (!isAttacked(row, col)) {
 				board[row][col] = 1;
-				if (placeQueen(row + 1)) {
+				if (placeNQueens(row + 1)) {
 					return true;
 				} else {
 					board[row][col] = 0;
@@ -71,6 +71,11 @@ public class NQueens {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+	public static void main(String[] args){
+		NQueens q = new NQueens();
+		q.printToConsole();
 	}
 
 }
